@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Leftbar() {
   return (
-    <div>Leftbar</div>
+    <div className='text-xl text-white'>Leftbar</div>
   )
 }
