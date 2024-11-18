@@ -1,13 +1,24 @@
 .search-bar{
     width: 600px;
     height: 50px;
+    border:none;
+    background-color: rgb(210, 210, 210);
+    font-size: 20px;
+    transition: 0.2s;
 }
+.search-bar:focus-visible{
+    --tw-ring-offset-width: 0px;
+    background-color: white;
+    transition: 0.2s;
+}
+
 .search-btn{
     height: 50px;
     transition: 0.3s ease;
 }
 
 .search-btn:hover{
+    background-color: hsl(0, 100%, 60%);
     box-shadow: 0 0 65px red;
     transition: 0.3s ease;
     transform: scale(1.3);
