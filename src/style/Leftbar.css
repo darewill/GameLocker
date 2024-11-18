@@ -2,6 +2,7 @@
     font-size: 50px;
     font-weight:bold;
     color: #e30f0f;
+    margin: 5px;
 }
 .left-games{
     height: 150px;
@@ -10,6 +11,7 @@
     display:flex;
     justify-content: center;
     cursor: pointer;
+    transition: 0.2s ease;
 }
 .left-games:hover{
     background-color: rgba(255, 255, 255, 0.377);
