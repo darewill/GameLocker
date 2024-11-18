@@ -12,7 +12,7 @@ function App() {
       <div className="left-side w-[15%]">
         <Leftbar />
       </div>
-      <div className="right-side w-[85%]">
+      <div className="right-side w-[85%] flex justify-center">
         <Outlet />
       </div>
     </div>
