@@ -7,3 +7,20 @@
 body{
     background: var(--color-bg);
 }
+
+@media (max-width: 1779px){
+    
+}
+
+@media (max-width: 1280px){
+    .left-side{
+        width: 32%;
+    }
+    .right-side{
+        width: 68%;
+    }
+}
+
+@media (max-width: 768px){
+
+}
