@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="main-container flex items-center">
-      <div className="left-side w-[15%]">
+      <div className="left-side w-[15%] shadow-lg">
         <Leftbar />
       </div>
       <div className="right-side w-[85%] flex justify-center">
