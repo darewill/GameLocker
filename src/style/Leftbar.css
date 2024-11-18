@@ -3,6 +3,17 @@
     font-weight:bold;
     color: #e30f0f;
 }
+.left-games{
+    height: 150px;
+    margin: 25px 0;
+    margin-left: 5px;
+    display:flex;
+    justify-content: center;
+    cursor: pointer;
+}
+.left-games:hover{
+    background-color: rgba(255, 255, 255, 0.377);
+}
 
 @media (max-width: 1779px){
     

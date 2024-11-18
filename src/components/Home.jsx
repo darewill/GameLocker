@@ -11,7 +11,7 @@ export default function Home() {
         <Input type="text" placeholder="Players Username / ID" className='search-bar rounded-r-none font-semibold'/>
         <Button variant="destructive" className='search-btn rounded-l-none font-semibold'>Search</Button>
       </div>
-      <div className="flex justify-center">
+      <div className="display-data flex justify-center">
         <p className='text-white'>stuff</p>
       </div>
     </div>
