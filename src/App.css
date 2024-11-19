@@ -20,7 +20,8 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -40%);
-  width: 85%;
+  width: auto;
+  height: 100%;
 }
 
 @media (max-width: 1779px) {

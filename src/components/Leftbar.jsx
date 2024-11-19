@@ -14,7 +14,9 @@ export default function Leftbar() {
       </Link>
       <ul className="left-items flex flex-col justify-center text-[30px]">
         <li className='left-games'>
-          <img src={Cs2}/>
+          <Link to='/cs2'>
+          <img src={Cs2} alt='CS2'/>
+          </Link>
         </li>
         <li className='left-games'>
         <img src={Valorant}/>

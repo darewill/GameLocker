@@ -3,16 +3,17 @@ import './App.css'
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Leftbar from './components/Leftbar'
 import Home from './components/Home'
+import CS2Page from './components/CS2Page'
 
 function App() {
   const Homepage = () => {
 
   return (
-    <div className="main-container flex items-center">
-      <div className="left-side sticky w-[15%] shadow-2xl mt-[25px]">
+    <div className="main-container flex">
+      <div className="left-side fixed w-[15%] shadow-2xl mt-[25px]">
         <Leftbar />
       </div>
-      <div className="right-side w-[85%] flex justify-center">
+      <div className="right-side flex justify-center">
         <Outlet />
       </div>
     </div>
@@ -26,6 +27,10 @@ function App() {
         {
         path: "/",
         element: <Home />,
+        },
+        {
+          path: "cs2",
+          element: <CS2Page />,
         }
       ],
     },

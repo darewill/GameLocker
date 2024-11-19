@@ -1,0 +1,15 @@
+.map-txt{
+    margin: 5px;
+}
+.def-txt{
+    font-size: 15px;
+    font-weight: 700;
+}
+
+.pp{
+    box-shadow: 0 0 65px hsl(201, 100%, 53%);
+}
+
+.ft-logo{
+    box-shadow: 0 0 10px hsl(51, 100%, 53%);
+}
