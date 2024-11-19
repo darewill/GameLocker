@@ -4,6 +4,7 @@ import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Leftbar from './components/Leftbar'
 import Home from './components/Home'
 import CS2Page from './components/CS2Page'
+import ValorantPage from './components/ValorantPage'
 
 function App() {
   const Homepage = () => {
@@ -31,6 +32,10 @@ function App() {
         {
           path: "cs2",
           element: <CS2Page />,
+        },
+        {
+          path: "valorant",
+          element: <ValorantPage />,
         }
       ],
     },

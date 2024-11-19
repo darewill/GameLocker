@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion
+import { motion, AnimatePresence } from "framer-motion";
 import Search from "../components/Search";
 import FaceitLogo from "../images/faceitLogo.png";
 import "../style/CS2Page.css";

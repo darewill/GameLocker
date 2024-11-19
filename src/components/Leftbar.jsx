@@ -5,6 +5,7 @@ import Valorant from "../images/valorant.png";
 import Overwatch from "../images/overwatch.png";
 import Lol from "../images/lol.png";
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Leftbar() {
   return (
@@ -19,13 +20,19 @@ export default function Leftbar() {
           </Link>
         </li>
         <li className='left-games'>
+        <Link to='valorant/'>
         <img src={Valorant}/>
+        </Link>
         </li>
         <li className='left-games'>
+        <Link to='/'>
         <img src={Overwatch}/>
+        </Link>
         </li>
         <li className='left-games'>
+        <Link to='/'>
         <img src={Lol}/>
+        </Link>
         </li>
       </ul>
     </div>
