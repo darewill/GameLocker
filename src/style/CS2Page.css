@@ -13,3 +13,32 @@
 .ft-logo{
     box-shadow: 0 0 10px hsl(51, 100%, 53%);
 }
+.glow-green {
+    color: green;
+    text-shadow: 0 0 2px green;
+    box-shadow: 0 0 15px green;
+    border-radius: 100%;
+  }
+  
+  .glow-yellow {
+    color: yellow;
+    text-shadow: 0 0 2px yellow;
+    box-shadow: 0 0 15px yellow;
+    border-radius: 100%;
+  }
+  
+  .glow-orange {
+    color: orange;
+    box-shadow: 0 0 2px orange;
+    text-shadow: 0 0 10px orange;
+    border-radius: 100%
+    
+  }
+  
+  .glow-red {
+    color: red;
+    box-shadow: 0 0 2px red;
+    text-shadow: 0 0 15px red;
+    border-radius: 100%;
+  }
+  

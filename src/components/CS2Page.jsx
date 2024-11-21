@@ -6,7 +6,7 @@ import "../style/CS2Page.css";
 
 export default function CS2Page() {
   const [playerData, setPlayerData] = useState(null);
-  const [playerStats, setPlayerStats] = useState(null); 
+  const [playerStats, setPlayerStats] = useState(null);
   const [mapSegments, setMapSegments] = useState([]);
 
   const fetchCS2Data = async (username) => {
@@ -80,93 +80,101 @@ export default function CS2Page() {
       <Search onSearch={fetchCS2Data} />
       <div className="cs2-data text-white">
         <AnimatePresence>
-        {playerData ? (
-          <img
-          src={playerData.avatar}
-          alt={`${playerData.nickname}'s avatar`}
-          className="pp w-[150px] rounded-full flex m-auto mt-[50px]"
-        />
-        ): <></>}
-        <div className="players-info flex flex-row items-center justify-between">
-          {playerData && (
-            <motion.div
-              key="player-data"
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ duration: 0.5 }}
-              className="player-details"
-            >
-              <div className="players-profile">
-                <p className="text-[30px] font-bold italic">
-                  {playerData.nickname}
-                </p>
-                <p className="def-txt">{playerData.steamNickname || "N/A"}</p>
-                <p className="def-txt">Region: {playerData.region}</p>
-                <p className="def-txt">Country: {playerData.country || "N/A"}</p>
-                <p className="def-txt">Faceit ELO: {playerData.faceitElo}</p>
+          {playerData ? (
+            <img
+              src={playerData.avatar}
+              alt={`${playerData.nickname}'s avatar`}
+              className="pp w-[150px] rounded-full flex m-auto mt-[50px]"
+            />
+          ) : (
+            <></>
+          )}
+          <div className="players-info flex flex-row items-center justify-between">
+            {playerData && (
+              <motion.div
+                key="player-data"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -50 }}
+                transition={{ duration: 0.5 }}
+                className="player-details"
+              >
+                <div className="players-profile">
+                  <p className="text-[30px] font-bold italic">
+                    {playerData.nickname}
+                  </p>
+                  <p className="def-txt">{playerData.steamNickname || "N/A"}</p>
+                  <p className="def-txt">Region: {playerData.region}</p>
+                  <p className="def-txt">
+                    Country: {playerData.country || "N/A"}
+                  </p>
+                  <p className="def-txt">Faceit ELO: {playerData.faceitElo}</p>
+                  <p className="def-txt">
+                    Faceit Level:{" "}
+                    <span
+                      className={
+                        Number(playerData.skillLevel) <= 3
+                          ? "glow-green"
+                          : Number(playerData.skillLevel) <= 7
+                          ? "glow-yellow"
+                          : Number(playerData.skillLevel) <= 9
+                          ? "glow-orange"
+                          : "glow-red"
+                      }
+                    >
+                      {playerData.skillLevel}
+                    </span>
+                  </p>
+                </div>
+              </motion.div>
+            )}
+
+            {playerStats && (
+              <motion.div
+                key="player-stats"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.5 }}
+                className="player-stats"
+              >
                 <p className="def-txt">
-                  Skill Level:{" "}
+                  Win Rate:{" "}
+                  <span
+                    style={{
+                      color: Number(playerStats.winRate) > 49 ? "green" : "red",
+                    }}
+                  >
+                    {playerStats.winRate}%
+                  </span>
+                </p>
+                <p className="def-txt">
+                  Matches Played: {playerStats.matchesPlayed}
+                </p>
+                <p className="def-txt">Headshots: {playerStats.headshots}</p>
+                <p className="def-txt">
+                  AVG Headshot:{" "}
                   <span
                     style={{
                       color:
-                        Number(playerData.skillLevel) <= 3
-                          ? "green"
-                          : Number(playerData.skillLevel) <= 7
-                          ? "yellow"
-                          : Number(playerData.skillLevel) <= 9
-                          ? "orange"
-                          : "red",
+                        Number(playerStats.avgHeadshots) > 49 ? "green" : "red",
                     }}
                   >
-                    {playerData.skillLevel}
+                    {playerStats.avgHeadshots}%
                   </span>
                 </p>
-              </div>
-            </motion.div>
-          )}
-
-          {playerStats && (
-            <motion.div
-              key="player-stats"
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -50 }}
-              transition={{ duration: 0.5 }}
-              className="player-stats"
-            >
-              <p className="def-txt">
-                Win Rate:{" "}
-                <span
-                  style={{
-                    color: Number(playerStats.winRate) > 49 ? "green" : "red",
-                  }}
-                >
-                  {playerStats.winRate}%
-                </span>
-              </p>
-              <p className="def-txt">Matches Played: {playerStats.matchesPlayed}</p>
-              <p className="def-txt">Headshots: {playerStats.headshots}</p>
-              <p className="def-txt">
-                AVG Headshot:{" "}
-                <span
-                  style={{
-                    color: Number(playerStats.avgHeadshots) > 49 ? "green" : "red",
-                  }}
-                >
-                  {playerStats.avgHeadshots}%
-                </span>
-              </p>
-              <p className="def-txt">
-                Longest Winning Streak: {playerStats.longestWinStreak}
-              </p>
-              <p className="def-txt">
-                Current Winning Streak: {playerStats.currentWinStreak}
-              </p>
-              <p className="def-txt">Recent Results: {playerStats.recentResults}</p>
-              <p className="def-txt">Total Wins: {playerStats.wins}</p>
-            </motion.div>
-          )}
+                <p className="def-txt">
+                  Longest Winning Streak: {playerStats.longestWinStreak}
+                </p>
+                <p className="def-txt">
+                  Current Winning Streak: {playerStats.currentWinStreak}
+                </p>
+                <p className="def-txt">
+                  Recent Results: {playerStats.recentResults}
+                </p>
+                <p className="def-txt">Total Wins: {playerStats.wins}</p>
+              </motion.div>
+            )}
           </div>
 
           {mapSegments.length > 0 && (
@@ -179,7 +187,10 @@ export default function CS2Page() {
               className="map-details"
             >
               {mapSegments.slice(0, 5).map((map, index) => (
-                <div key={index} className="map-details flex flex-row my-[10px]">
+                <div
+                  key={index}
+                  className="map-details flex flex-row my-[10px]"
+                >
                   <img
                     src={map.img_regular}
                     alt={`${map.label} map`}
