@@ -20,12 +20,12 @@ export default function Leftbar() {
           </Link>
         </li>
         <li className='left-games'>
-        <Link to='valorant/'>
+        <Link to='/valorant'>
         <img src={Valorant}/>
         </Link>
         </li>
         <li className='left-games'>
-        <Link to='/'>
+        <Link to='/overwatch'>
         <img src={Overwatch}/>
         </Link>
         </li>

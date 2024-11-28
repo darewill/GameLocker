@@ -5,6 +5,7 @@ import Leftbar from './components/Leftbar'
 import Home from './components/Home'
 import CS2Page from './components/CS2Page'
 import ValorantPage from './components/ValorantPage'
+import Overwatch from './components/Overwatch'
 
 function App() {
   const Homepage = () => {
@@ -36,7 +37,11 @@ function App() {
         {
           path: "valorant",
           element: <ValorantPage />,
-        }
+        },
+        {
+          path: "overwatch",
+          element: <Overwatch />,
+        },
       ],
     },
     {
