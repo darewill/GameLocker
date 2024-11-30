@@ -1,102 +1,64 @@
 import React, { useState } from "react";
-import Search from "../components/Search"; // Assuming Search.jsx is located here
-import "../style/Overwatch.css";
+import Search from "./Search"; // Adjust the path if necessary
 
-export default function Overwatch() {
-    const [playerData, setPlayerData] = useState(null);
+const Overwatch = () => {
+  const [playerData, setPlayerData] = useState(null);
+  const [error, setError] = useState("");
 
-    const OWFetchData = async (playerId) => {
-        try {
-            const response = await fetch(`https://overfast-api.tekrop.fr/players/${playerId}/stats/summary`);
-            if (!response.ok) {
-                console.error("Failed to fetch player data:", response.statusText);
-                return;
-            }
-            const data = await response.json();
-            setPlayerData(data.summary); // Store the `summary` object from the API
-        } catch (error) {
-            console.error("Error fetching Overwatch data:", error);
-        }
-    };
+  // Function to fetch player data
+  const OWFetchData = async (playerId) => {
+    const apiUrl = `https://overfast-api.tekrop.fr/players/${playerId}/summary`;
+    try {
+      setError(""); // Clear previous errors
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error(`Player not found (status: ${response.status})`);
+      }
+      const data = await response.json();
+      setPlayerData(data); // Update the state with fetched data
+    } catch (err) {
+      console.error("Error fetching player data:", err);
+      setPlayerData(null); // Clear player data if there's an error
+      setError(err.message); // Show the error message
+    }
+  };
 
-    return (
-        <div className="overwatch-wrapper flex flex-col items-center">
-            <h1 className="text-white text-[30px] mb-4">Overwatch Player Stats</h1>
-            <Search onSearch={OWFetchData} /> {/* Use your existing Search component */}
-            {playerData && (
-                <div className="player-stats-container">
-                    {/* Profile Section */}
-                    <div className="player-profile">
-                        <img src={playerData.avatar} alt="Avatar" className="avatar" />
-                        <p className="player-name">{playerData.username}</p>
-                        <img src={playerData.namecard} alt="Namecard" className="namecard" />
-                        <p className="player-title">{playerData.title}</p>
-                        <div className="endorsement">
-                            <img src={playerData.endorsement.frame} alt="Endorsement Frame" />
-                            <p>Endorsement Level: {playerData.endorsement.level}</p>
-                        </div>
-                    </div>
+  // Handle search input from Search component
+  const handleSearch = (username) => {
+    OWFetchData(username);
+  };
 
-                    {/* Competitive Section */}
-                    <div className="competitive-section">
-                        <h2>Competitive PC Stats</h2>
-                        {["tank", "damage", "support", "open"].map((role) => (
-                            playerData.competitive.pc[role] && (
-                                <div key={role} className="role-stats">
-                                    <img src={playerData.competitive.pc[role].role_icon} alt={`${role} Role`} />
-                                    <p>
-                                        {role.charAt(0).toUpperCase() + role.slice(1)}:{" "}
-                                        {playerData.competitive.pc[role].division} Tier{" "}
-                                        {playerData.competitive.pc[role].tier}
-                                    </p>
-                                    <img src={playerData.competitive.pc[role].tier_icon} alt="Tier Icon" />
-                                    <img src={playerData.competitive.pc[role].rank_icon} alt="Rank Icon" />
-                                </div>
-                            )
-                        ))}
-                    </div>
+  return (
+    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      {/* Use the custom search bar */}
+      <Search onSearch={handleSearch} />
 
-                    {/* Statistics Section */}
-                    <div className="player-statistics">
-                        <h2>Player Statistics</h2>
-                        <p>Average Kills: {playerData.average_kills || "N/A"}</p>
-                        <p>Average Damage: {playerData.average_damage || "N/A"}</p>
-                        <p>Average Deaths: {playerData.average_deaths || "N/A"}</p>
-                        <p>Average Assists: {playerData.average_assists || "N/A"}</p>
-                        <p>Average Healing: {playerData.average_healing || "N/A"}</p>
-                        <p>Average Eliminations: {playerData.average_eliminations || "N/A"}</p>
-                        <p>Games Lost: {playerData.games_lost || "N/A"}</p>
-                        <p>Games Played: {playerData.games_played || "N/A"}</p>
-                        <p>Games Won: {playerData.games_won || "N/A"}</p>
-                        <p>KDA: {playerData.kda || "N/A"}</p>
-                        <p>Time Played: {playerData.time_played || "N/A"}</p>
-                        <p>Winrate: {playerData.winrate || "N/A"}%</p>
-                    </div>
+      {/* Error Message */}
+      {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
 
-                    {/* Totals Section */}
-                    <div className="player-totals">
-                        <h2>Total Stats</h2>
-                        <p>Total Assists: {playerData.total_assists || "N/A"}</p>
-                        <p>Total Damage: {playerData.total_damage || "N/A"}</p>
-                        <p>Total Deaths: {playerData.total_deaths || "N/A"}</p>
-                        <p>Total Healing: {playerData.total_healing || "N/A"}</p>
-                        <p>Total Eliminations: {playerData.total_eliminations || "N/A"}</p>
-                    </div>
-
-                    {/* Top Heroes Section */}
-                    <div className="top-heroes">
-                        <h2>Top 5 Heroes</h2>
-                        {playerData.top_heroes?.slice(0, 5).map((hero, index) => (
-                            <div key={index} className="hero">
-                                <p>{hero.name}</p>
-                                <p>Games Played: {hero.games_played}</p>
-                                <p>Winrate: {hero.winrate}%</p>
-                                <p>Time Played: {hero.time_played}</p>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            )}
+      {/* Player Data */}
+      {playerData && (
+        <div style={{ marginTop: "20px", border: "1px solid #CCC", padding: "20px", borderRadius: "5px" }}>
+          <h2>{playerData.username}</h2>
+          <img
+            src={playerData.avatar}
+            alt={`${playerData.username}'s avatar`}
+            style={{ width: "100px", borderRadius: "50%" }}
+          />
+          <p>
+            <strong>Title:</strong> {playerData.title || "No title available"}
+          </p>
+          <p>
+            <strong>Endorsement Level:</strong> {playerData.endorsement.level || "N/A"}
+          </p>
+          <p>
+            <strong>Last Updated:</strong>{" "}
+            {new Date(playerData.last_updated_at * 1000).toLocaleString() || "N/A"}
+          </p>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
+
+export default Overwatch;
