@@ -1,59 +1,128 @@
 import React, { useState } from "react";
-import Search from "./Search"; // Adjust the path if necessary
+import Search from "./Search";
 
 const Overwatch = () => {
   const [playerData, setPlayerData] = useState(null);
   const [error, setError] = useState("");
 
-  // Function to fetch player data
   const OWFetchData = async (playerId) => {
     const apiUrl = `https://overfast-api.tekrop.fr/players/${playerId}/summary`;
     try {
-      setError(""); // Clear previous errors
+      setError("");
       const response = await fetch(apiUrl);
       if (!response.ok) {
-        throw new Error(`Player not found (status: ${response.status})`);
+        throw new Error(
+          `Player not found (status: ${response.status}), Check the name again!`
+        );
       }
       const data = await response.json();
-      setPlayerData(data); // Update the state with fetched data
+      setPlayerData(data);
     } catch (err) {
       console.error("Error fetching player data:", err);
-      setPlayerData(null); // Clear player data if there's an error
-      setError(err.message); // Show the error message
+      setPlayerData(null);
+      setError(err.message);
     }
   };
 
-  // Handle search input from Search component
   const handleSearch = (username) => {
     OWFetchData(username);
   };
 
   return (
     <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      {/* Use the custom search bar */}
       <Search onSearch={handleSearch} />
 
-      {/* Error Message */}
       {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
 
-      {/* Player Data */}
       {playerData && (
-        <div style={{ marginTop: "20px", border: "1px solid #CCC", padding: "20px", borderRadius: "5px" }}>
-          <h2>{playerData.username}</h2>
+        <div className="mt-[20px] p-[20px] rounded-[5px] text-white flex flex-col items-center">
+          <div className="pr-name flex justify-center">
+            <h2 className="font-bold uppercase italic text-[35px] absolute mt-[20px]">
+              {playerData.username}
+            </h2>
+            <img src={playerData.namecard} className="w-[50%] m-auto" />
+          </div>
+
           <img
             src={playerData.avatar}
             alt={`${playerData.username}'s avatar`}
-            style={{ width: "100px", borderRadius: "50%" }}
+            className="w-[100px] rounded-[50%] my-[10px]"
           />
           <p>
             <strong>Title:</strong> {playerData.title || "No title available"}
           </p>
           <p>
-            <strong>Endorsement Level:</strong> {playerData.endorsement.level || "N/A"}
+            <strong>Endorsement Level:</strong>{" "}
+            <img
+              src={playerData.endorsement.frame}
+              className="w-[50px] m-auto"
+            />
           </p>
           <p>
-            <strong>Last Updated:</strong>{" "}
-            {new Date(playerData.last_updated_at * 1000).toLocaleString() || "N/A"}
+            <strong>Season:</strong> {playerData.competitive.pc.season}
+          </p>
+          <p>
+            <div className="stats flex columns-3 justify-center">
+              <div className="tank m-[70px]">
+                <p className="text-center font-bold mb-[5px]">Tank</p>
+                <img
+                  src={playerData.competitive.pc.tank.role_icon}
+                  className="w-[30px] m-auto mb-[10px]"
+                />
+                <img
+                  src={playerData.competitive.pc.tank.rank_icon}
+                  className="w-[80px] m-auto"
+                />
+                <img
+                  src={playerData.competitive.pc.tank.tier_icon}
+                  className="w-[50px] m-auto mb-[10px]"
+                />
+                <p className="text-center font-semibold uppercase">
+                  {playerData.competitive.pc.tank.division}
+                </p>
+              </div>
+              <div className="dmg m-[70px]">
+                <p className="text-center font-bold mb-[5px]">Damage</p>
+                <img
+                  src={playerData.competitive.pc.damage.role_icon}
+                  className="w-[30px] m-auto mb-[10px]"
+                />
+                <img
+                  src={playerData.competitive.pc.damage.rank_icon}
+                  className="w-[80px] m-auto"
+                />
+                <img
+                  src={playerData.competitive.pc.damage.tier_icon}
+                  className="w-[50px] m-auto mb-[10px]"
+                />
+                <p className="text-center font-semibold uppercase">
+                  {playerData.competitive.pc.damage.division}
+                </p>
+              </div>
+              <div className="supp m-[70px]">
+                <p className="text-center font-bold mb-[5px]">Support</p>
+                <img
+                  src={playerData.competitive.pc.support.role_icon}
+                  className="w-[30px] m-auto mb-[10px]"
+                />
+                <img
+                  src={playerData.competitive.pc.support.rank_icon}
+                  className="w-[80px] m-auto"
+                />
+                <img
+                  src={playerData.competitive.pc.support.tier_icon}
+                  className="w-[50px] m-auto mb-[10px]"
+                />
+                <p className="text-center font-semibold uppercase">
+                  {playerData.competitive.pc.support.division}
+                </p>
+              </div>
+            </div>
+            <p className='text-center'>
+              <strong>Last Updated:</strong>{" "}
+              {new Date(playerData.last_updated_at * 1000).toLocaleString() ||
+                "N/A"}
+            </p>
           </p>
         </div>
       )}
