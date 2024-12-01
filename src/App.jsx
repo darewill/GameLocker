@@ -6,6 +6,7 @@ import Home from './components/Home'
 import CS2Page from './components/CS2Page'
 import ValorantPage from './components/ValorantPage'
 import Overwatch from './components/Overwatch'
+import LOLPage from './components/LOLPage'
 
 function App() {
   const Homepage = () => {
@@ -41,6 +42,10 @@ function App() {
         {
           path: "overwatch",
           element: <Overwatch />,
+        },
+        {
+          path: "leagueoflegends",
+          element: <LOLPage />,
         },
       ],
     },

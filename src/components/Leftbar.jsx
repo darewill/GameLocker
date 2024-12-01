@@ -30,7 +30,7 @@ export default function Leftbar() {
         </Link>
         </li>
         <li className='left-games'>
-        <Link to='/'>
+        <Link to='/leagueoflegends'>
         <img src={Lol}/>
         </Link>
         </li>
