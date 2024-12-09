@@ -11,6 +11,7 @@ const PORT = 5000;
 app.use(cors());
 
 const API_KEY = process.env.VITE_LOL_API_KEY;
+const VAL_KEY = process.env.VITE_VAL_API_KEY;
 
 app.get("/api/player/:gameName/:tagLine", async (req, res) => {
   const { gameName, tagLine } = req.params;
@@ -66,6 +67,35 @@ app.get("/api/summoner/:puuid", async (req, res) => {
   }
 });
 
+app.get("/api/valorant/player/:gameName/:tagLine", async (req, res) => {
+  const { gameName, tagLine } = req.params;
+  const API_URL = `https://api.henrikdev.xyz/valorant/v1/account/${gameName}/${tagLine}`;
+
+  try {
+    const response = await fetch(API_URL, {
+      headers: {
+        Authorization: `${process.env.VITE_VAL_API_KEY}`, // Directly use your HDEV key
+      },
+    });
+
+    if (!response.ok) {
+      const error = await response.text();
+      console.error(`Error: ${response.status} - ${error}`);
+      return res.status(response.status).json({ error: "Player not found or API error" });
+    }
+
+    const data = await response.json();
+    res.json(data);
+  } catch (err) {
+    console.error("Error fetching Valorant player data:", err);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
+
+
+
+
+
 app.listen(PORT, () => {
-  console.log(`Proxy server is running at http://localhost:${PORT}`);
+  console.log(`Proxy server running on http://localhost:${PORT}`);
 });
