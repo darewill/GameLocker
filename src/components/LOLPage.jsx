@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Search from "./Search";
+import { motion, AnimatePresence } from "framer-motion";
 
 const LOLPage = () => {
   const [playerData, setPlayerData] = useState(null);
@@ -42,7 +43,9 @@ const LOLPage = () => {
       const response = await fetch(API_URL);
 
       if (!response.ok) {
-        throw new Error(`Champion mastery data not found (status: ${response.status})`);
+        throw new Error(
+          `Champion mastery data not found (status: ${response.status})`
+        );
       }
 
       const data = await response.json();
@@ -78,62 +81,79 @@ const LOLPage = () => {
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className="p-[20px] font-sans">
       <Search onSearch={handleSearch} />
+      <AnimatePresence>
+        {error && <p className="text-red text-center">{error}</p>}
 
-      {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
+        {playerData && (
+          <motion.div
+            key="player-data"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="player-details"
+          >
+            <div className="flex flex-col items-center mt-[40px] text-white">
+              {profileIconUrl && (
+                <img
+                  src={profileIconUrl}
+                  alt={`${playerData.gameName}'s profile`}
+                  className="w-[100px] rounded-[50%]"
+                />
+              )}
+              <p>
+                <strong>PUUID:</strong> {playerData.puuid}
+              </p>
+              <p>
+                <strong>Game Name:</strong> {playerData.gameName}
+              </p>
+              <p>
+                <strong>Game Tag:</strong> {playerData.tagLine}
+              </p>
+            </div>
+          </motion.div>
+        )}
 
-      {playerData && (
-        <div>
-          <h2>Player Information</h2>
-          {profileIconUrl && (
-            <img
-              src={profileIconUrl}
-              alt={`${playerData.gameName}'s profile`}
-              style={{ width: "100px", borderRadius: "50%" }}
-            />
-          )}
-          <p>
-            <strong>PUUID:</strong> {playerData.puuid}
-          </p>
-          <p>
-            <strong>Game Name:</strong> {playerData.gameName}
-          </p>
-          <p>
-            <strong>Game Tag:</strong> {playerData.tagLine}
-          </p>
-        </div>
-      )}
-
-      {masteryData && (
-        <div>
-          <h2>Champion Mastery Information</h2>
-          <p>
-            <strong>Champion ID:</strong> {masteryData.championId}
-          </p>
-          <p>
-            <strong>Champion Level:</strong> {masteryData.championLevel}
-          </p>
-          <p>
-            <strong>Champion Points:</strong> {masteryData.championPoints}
-          </p>
-          <p>
-            <strong>Last Play Time:</strong>{" "}
-            {new Date(masteryData.lastPlayTime).toLocaleString()}
-          </p>
-          <p>
-            <strong>Points Since Last Level:</strong>{" "}
-            {masteryData.championPointsSinceLastLevel}
-          </p>
-          <p>
-            <strong>Points Until Next Level:</strong>{" "}
-            {masteryData.championPointsUntilNextLevel}
-          </p>
-          <p>
-            <strong>Tokens Earned:</strong> {masteryData.tokensEarned}
-          </p>
-        </div>
-      )}
+        {masteryData && (
+          <motion.div
+            key="player-data"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.5 }}
+            className="player-details"
+          >
+            <div className="flex flex-col text-center text-white mt-[15px]">
+              <p>
+                <strong>Champion ID:</strong> {masteryData.championId}
+              </p>
+              <p>
+                <strong>Champion Level:</strong> {masteryData.championLevel}
+              </p>
+              <p>
+                <strong>Champion Points:</strong> {masteryData.championPoints}
+              </p>
+              <p>
+                <strong>Last Play Time:</strong>{" "}
+                {new Date(masteryData.lastPlayTime).toLocaleString()}
+              </p>
+              <p>
+                <strong>Points Since Last Level:</strong>{" "}
+                {masteryData.championPointsSinceLastLevel}
+              </p>
+              <p>
+                <strong>Points Until Next Level:</strong>{" "}
+                {masteryData.championPointsUntilNextLevel}
+              </p>
+              <p>
+                <strong>Tokens Earned:</strong> {masteryData.tokensEarned}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
