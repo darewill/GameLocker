@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Search from "./Search";
 import { motion, AnimatePresence } from "framer-motion";
+import ValorantLogo from "../images/ValorantLogo.png";
+import "../style/ValorantPage.css";
 
 export default function ValorantPage() {
   const [playerData, setPlayerData] = useState(null);
@@ -32,7 +34,11 @@ export default function ValorantPage() {
   };
 
   return (
-    <div>
+    <div className="p-[20px] text-center flex flex-col items-center">
+      <p className="flex italic justify-center text-[#939393] ">
+        Example of searching players: Player#TagName
+      </p>
+      <img src={ValorantLogo} className="val-logo w-[150px] h-[150px] mt-[20%]" />
       <Search onSearch={fetchPlayerData} />
       <AnimatePresence>
         {error && <div className="text-red">{error}</div>}

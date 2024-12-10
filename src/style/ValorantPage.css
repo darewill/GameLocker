@@ -1,3 +1,9 @@
 .info-card{
     margin-top: 20px;
 }
+
+.val-logo{
+    border-radius: 100%;
+    padding: 10px;
+    box-shadow: 0 0 20px hsl(349, 100%, 53%);
+}

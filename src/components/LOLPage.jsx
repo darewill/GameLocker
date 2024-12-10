@@ -82,6 +82,10 @@ const LOLPage = () => {
 
   return (
     <div className="p-[20px] font-sans">
+      <p className="flex italic justify-center text-[#939393] ">
+        NOTE: To search League of Legends players instead of '#' use '/', for example
+        'Player/01234'
+      </p>
       <Search onSearch={handleSearch} />
       <AnimatePresence>
         {error && <p className="text-red text-center">{error}</p>}

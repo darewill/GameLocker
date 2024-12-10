@@ -30,14 +30,14 @@ const Overwatch = () => {
   };
 
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial, sans-serif" }}>
+    <div className='p-[20px] font-sans'>
       <p className="flex italic justify-center text-[#939393] ">
         NOTE: To search Overwatch players instead of '#' use '-', for example
         'Player-01234'
       </p>
       <Search onSearch={handleSearch} />
       <AnimatePresence>
-        {error && <p style={{ color: "red", textAlign: "center" }}>{error}</p>}
+        {error && <p className='text-red text-center'>{error}</p>}
 
         {playerData && (
           <motion.div
