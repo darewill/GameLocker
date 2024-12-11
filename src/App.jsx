@@ -16,7 +16,7 @@ function App() {
       <div className="left-side fixed w-[15%] shadow-2xl mt-[25px]">
         <Leftbar />
       </div>
-      <div className="right-side flex justify-center">
+      <div className="right-side grid justify-center">
         <Outlet />
       </div>
     </div>

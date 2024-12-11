@@ -34,13 +34,25 @@ export default function ValorantPage() {
   };
 
   return (
-    <div className="p-[20px] text-center flex flex-col items-center">
-      <p className="flex italic justify-center text-[#939393] ">
-        Example of searching players: Player#TagName
-      </p>
-      <img src={ValorantLogo} className="val-logo w-[150px] h-[150px] mt-[20%]" />
-      <Search onSearch={fetchPlayerData} />
-      <AnimatePresence>
+    <AnimatePresence>
+      <div className="p-[20px] text-center flex flex-col items-center">
+        <motion.div
+          key="player-data"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5 }}
+          className="player-details flex flex-col items-center"
+        >
+          <p className="flex italic justify-center text-[#939393] ">
+            Example of searching players: Player#TagName
+          </p>
+          <img
+            src={ValorantLogo}
+            className="val-logo w-[150px] h-[150px] mt-[20%]"
+          />
+          <Search onSearch={fetchPlayerData} />
+        </motion.div>
         {error && <div className="text-red-600">{error}</div>}
 
         {playerData && (
@@ -76,7 +88,10 @@ export default function ValorantPage() {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+      </div>
+      <p className="flex italic justify-center text-[#939393] items-end">
+        powered by: Urim Rexhepi © 2024
+      </p>
+    </AnimatePresence>
   );
 }

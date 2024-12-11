@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Search from "./Search";
 import { motion, AnimatePresence } from "framer-motion";
+import LolLogo from "../images/LolLogo.png";
+import "../style/LOL.css";
 
 const LOLPage = () => {
   const [playerData, setPlayerData] = useState(null);
@@ -81,13 +83,26 @@ const LOLPage = () => {
   };
 
   return (
-    <div className="p-[20px] font-sans">
-      <p className="flex italic justify-center text-[#939393] ">
-        NOTE: To search League of Legends players instead of '#' use '/', for example
-        'Player/01234'
-      </p>
-      <Search onSearch={handleSearch} />
-      <AnimatePresence>
+    <AnimatePresence>
+      <div className="p-[20px] font-sans flex flex-col items-center">
+        <motion.div
+          key="player-data"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5 }}
+          className="player-details flex flex-col items-center"
+        >
+          <p className="flex italic justify-center text-[#939393] ">
+            NOTE: To search League of Legends players instead of '#' use '/',
+            for example 'Player/01234'
+          </p>
+          <img
+            src={LolLogo}
+            className="lol-logo w-[150px] h-[150px] mt-[20%]"
+          />
+          <Search onSearch={handleSearch} />
+        </motion.div>
         {error && <p className="text-red-600 text-center">{error}</p>}
 
         {playerData && (
@@ -157,8 +172,11 @@ const LOLPage = () => {
             </div>
           </motion.div>
         )}
-      </AnimatePresence>
-    </div>
+      </div>
+      <p className="flex italic justify-center text-[#939393] items-end">
+        powered by: Urim Rexhepi © 2024
+      </p>
+    </AnimatePresence>
   );
 };
 

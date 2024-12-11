@@ -75,11 +75,23 @@ export default function CS2Page() {
   };
 
   return (
-    <div className="cs2-wrapper flex flex-col items-center">
-      <img src={FaceitLogo} className="ft-logo w-[200px] mt-[20%] rounded-xl" />
-      <Search onSearch={fetchCS2Data} />
-      <div className="cs2-data text-white">
-        <AnimatePresence>
+    <AnimatePresence>
+      <div className="cs2-wrapper flex flex-col items-center">
+        <motion.div
+          key="player-data"
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -50 }}
+          transition={{ duration: 0.5 }}
+          className="player-details flex flex-col items-center"
+        >
+          <img
+            src={FaceitLogo}
+            className="ft-logo w-[200px] mt-[20%] rounded-xl"
+          />
+          <Search onSearch={fetchCS2Data} />
+        </motion.div>
+        <div className="cs2-data text-white">
           {playerData ? (
             <img
               src={playerData.avatar}
@@ -215,8 +227,11 @@ export default function CS2Page() {
               ))}
             </motion.div>
           )}
-        </AnimatePresence>
+        </div>
       </div>
-    </div>
+      <p className="flex italic justify-center text-[#939393] items-end">
+        powered by: Urim Rexhepi © 2024
+      </p>
+    </AnimatePresence>
   );
 }
