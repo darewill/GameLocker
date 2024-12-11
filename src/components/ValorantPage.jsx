@@ -41,7 +41,7 @@ export default function ValorantPage() {
       <img src={ValorantLogo} className="val-logo w-[150px] h-[150px] mt-[20%]" />
       <Search onSearch={fetchPlayerData} />
       <AnimatePresence>
-        {error && <div className="text-red">{error}</div>}
+        {error && <div className="text-red-600">{error}</div>}
 
         {playerData && (
           <motion.div

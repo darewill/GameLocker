@@ -88,7 +88,7 @@ const LOLPage = () => {
       </p>
       <Search onSearch={handleSearch} />
       <AnimatePresence>
-        {error && <p className="text-red text-center">{error}</p>}
+        {error && <p className="text-red-600 text-center">{error}</p>}
 
         {playerData && (
           <motion.div
