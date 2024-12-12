@@ -37,4 +37,7 @@ body {
 }
 
 @media (max-width: 768px) {
+  .left-side{
+    position:absolute
+  }
 }

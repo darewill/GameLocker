@@ -17,19 +17,19 @@ export default function Home() {
       >
         <div className="home-wrapper flex flex-col columns-2 justify-center">
           <div className="titles flex mt-[10%]">
-            <div className="flex flex-col main-title text-[50px] font-bold text-white flex mr-[100px]">
+            <div className="first-title flex flex-col main-title text-[50px] font-bold text-white mr-[100px]">
               <h1>TRACK.</h1>
               <h1 className="bg-[#FF0000]">COMPETE.</h1>
               <h1>DOMINATE.</h1>
             </div>
 
-            <h1 className="text-[50px] font-bold text-white flex m-[-40px]">
+            <h1 className="second-title text-[50px] font-bold text-white flex m-[-40px]">
               Track your stats, analyze your performance, and dominate the
               competition in your favorite games.
             </h1>
           </div>
           <div className="second-content mt-[150px] flex items-center text-white">
-            <img src={Goku} className="h-[300px] w-[250px] mr-[100px]" />
+            <img src={Goku} className="pic h-[300px] w-[250px] mr-[100px]" />
             <div className="descr-text bg-[#171717] p-[20px] rounded">
               <h1 className='font-bold text-red-600'>Welcome to GameLocker!</h1>
               <br />

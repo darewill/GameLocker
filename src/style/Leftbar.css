@@ -1,31 +1,101 @@
-.logo{
+/* Base styles for desktop */
+.left-wrapper {
+    padding: 10px;
+  }
+  
+  .logo {
     text-align: center;
     font-size: 45px;
-    font-weight:bold;
+    font-weight: bold;
     color: #e30f0f;
     margin: 5px;
-}
-.left-games{
+  }
+  
+  .left-games {
     height: 150px;
     margin: 25px 0;
     margin-left: 5px;
-    display:flex;
+    display: flex;
     justify-content: center;
     cursor: pointer;
     transition: 0.2s ease;
-}
-.left-games:hover{
+  }
+  
+  .left-games:hover {
     background-color: rgba(255, 255, 255, 0.377);
-}
-
-@media (max-width: 1779px){
-    
-}
-
-@media (max-width: 1280px){
-    
-}
-
-@media (max-width: 768px){
-
-}
+  }
+  
+  /* Mobile Burger Menu */
+  .burger-menu {
+    display: none;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #fff;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+  
+  /* Mobile Menu */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 70%;
+    background: #1c1c1c;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 10px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+  }
+  
+  .mobile-menu-items {
+    list-style: none;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .mobile-menu-items li {
+    margin: 20px 0;
+    font-size: 24px;
+  }
+  
+  .mobile-menu-items li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  /* Media Queries */
+  @media (max-width: 768px) {
+    /* Hide desktop view */
+    .desktop-view {
+      display: none;
+    }
+  
+    /* Show burger menu */
+    .burger-menu {
+      display: block;
+      position: relative;
+      z-index: 1;
+      color:white;
+    }
+    .burger-menu:focus{
+        color: red;
+    }
+    .lb-items{
+        position: relative;
+        z-index: 1;
+        background-color: #000000;
+        border:3px solid rgba(123, 0, 0, 0.324);
+        border-radius: 10px;
+        margin-left: 10px;
+        margin-top: 20px;
+    }
+  }
+  
