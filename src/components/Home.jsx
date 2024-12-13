@@ -3,6 +3,9 @@ import "../style/Home.css";
 import { motion, AnimatePresence } from "framer-motion";
 import Goku from "../images/Goku.png";
 import Search from "../components/Search";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import { faFile } from "@fortawesome/free-regular-svg-icons";
 
 export default function Home() {
   return (
@@ -42,8 +45,10 @@ export default function Home() {
                 while maintaining a professional standard of work.
               </h1>
               <br />
-              <a href='https://github.com/darewill' className='italic hover:text-cyan-600'>https://github.com/darewill</a>
-              <h1 className='italic font-semibold'>
+              <a href='https://github.com/darewill' className='hover:text-cyan-600 text-[25px] m-[5px]'><FontAwesomeIcon icon={faGithub}/></a>
+              <a href='https://www.linkedin.com/in/urimrexhepi/' className='hover:text-cyan-600 text-[25px] m-[5px]'><FontAwesomeIcon icon={faLinkedin}/></a>
+              <a href='https://drive.google.com/file/d/1Ec_Sucsw4Fi-261Izez8IApk4MSkNthz/view' className='hover:text-cyan-600 text-[25px] m-[5px]'><FontAwesomeIcon icon={faFile}/>cv</a>
+              <h1 className='italic font-semibold mt-[10px]'>
                 -U.R
               </h1>
             </div>
