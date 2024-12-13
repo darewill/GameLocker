@@ -25,19 +25,39 @@ body {
 }
 
 @media (max-width: 1779px) {
+  .left-side{
+    position:absolute
+  }
 }
 
 @media (max-width: 1280px) {
   .left-side {
-    width: 32%;
+    width: 12%;
+    position:absolute
   }
   .right-side {
     width: 68%;
+  }
+  .left-games{
+    display: flex;
+    align-items: center;
   }
 }
 
 @media (max-width: 768px) {
   .left-side{
+    width: 32%;
     position:absolute
+  }
+  .footer-text{
+    margin-top: 100px;
+  }
+  .note-txt{
+    width: 90%;
+    font-size: 10px;
+    color: red;
+  }
+  .player-details{
+    
   }
 }

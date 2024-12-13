@@ -42,7 +42,7 @@ const Overwatch = () => {
           transition={{ duration: 0.5 }}
           className="player-details flex flex-col items-center"
         >
-          <p className="flex italic justify-center text-[#939393] ">
+          <p className="note-txt flex italic justify-center text-[#939393] ">
             NOTE: To search Overwatch players instead of '#' use '-', for
             example 'Player-01234'
           </p>
@@ -62,7 +62,7 @@ const Overwatch = () => {
           >
             <div className="mt-[20px] p-[20px] rounded-[5px] text-white flex flex-col items-center">
               <div className="pr-name flex justify-center">
-                <h2 className="font-bold uppercase italic text-[35px] absolute mt-[20px]">
+                <h2 className="username-text font-bold uppercase italic text-[35px] absolute mt-[20px]">
                   {playerData.username}
                 </h2>
                 <img src={playerData.namecard} className="w-[50%] m-auto" />

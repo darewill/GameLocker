@@ -3,3 +3,22 @@
     padding: 5px;
     box-shadow: 0 0 20px hsl(190, 100%, 53%);
 }
+
+@media (max-width: 1779px) {
+
+}
+
+@media (max-width: 1280px) {
+
+}
+
+@media (max-width: 768px) {
+    .lol-info{
+        display: flex;
+        text-align: center;
+    }
+    .puuid-txt{
+        width: 90%;
+        font-size: 14px;
+    }
+}

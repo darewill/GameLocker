@@ -14,7 +14,7 @@ export default function Search({onSearch}) {
 
   return (
     <div className="search-wrapper">
-      <h1 className="text-[35px] text-white flex justify-center uppercase font-bold mt-[50px] mb-[50px] font-sans">
+      <h1 className="main-srch-title text-[35px] text-white flex justify-center uppercase font-bold mt-[50px] mb-[50px] font-sans">
         Search a player by their username or id
       </h1>
       <div className="search-container flex items-center justify-center">

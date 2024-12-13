@@ -93,7 +93,7 @@ const LOLPage = () => {
           transition={{ duration: 0.5 }}
           className="player-details flex flex-col items-center"
         >
-          <p className="flex italic justify-center text-[#939393] ">
+          <p className="note-txt flex italic justify-center text-[#939393] ">
             NOTE: To search League of Legends players instead of '#' use '/',
             for example 'Player/01234'
           </p>
@@ -114,7 +114,7 @@ const LOLPage = () => {
             transition={{ duration: 0.5 }}
             className="player-details"
           >
-            <div className="flex flex-col items-center mt-[40px] text-white">
+            <div className="lol-info flex flex-col items-center mt-[40px] text-white">
               {profileIconUrl && (
                 <img
                   src={profileIconUrl}
@@ -122,7 +122,7 @@ const LOLPage = () => {
                   className="w-[100px] rounded-[50%]"
                 />
               )}
-              <p>
+              <p className="puuid-txt"> 
                 <strong>PUUID:</strong> {playerData.puuid}
               </p>
               <p>

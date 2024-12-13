@@ -2,3 +2,22 @@
     border-radius: 100%;
     box-shadow: 0 0 20px hsl(40, 100%, 53%);
 }
+
+@media (max-width: 1779px) {
+
+  }
+  
+  @media (max-width: 1280px) {
+
+  }
+  
+  @media (max-width: 768px) {
+    .stats{
+        display: flex;
+        flex-direction: column;
+    }
+    .username-text{
+        margin-top: 5px;
+    }
+  }
+  

@@ -229,7 +229,7 @@ export default function CS2Page() {
           )}
         </div>
       </div>
-      <p className="flex italic justify-center text-[#939393] items-end">
+      <p className="footer-text flex italic justify-center text-[#939393] items-end">
         powered by: Urim Rexhepi © 2024
       </p>
     </AnimatePresence>

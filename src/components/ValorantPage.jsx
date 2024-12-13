@@ -44,7 +44,7 @@ export default function ValorantPage() {
           transition={{ duration: 0.5 }}
           className="player-details flex flex-col items-center"
         >
-          <p className="flex italic justify-center text-[#939393] ">
+          <p className="note-txt flex italic justify-center text-[#939393] ">
             Example of searching players: Player#TagName
           </p>
           <img

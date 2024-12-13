@@ -42,3 +42,27 @@
     border-radius: 100%;
   }
   
+  @media (max-width: 1779px) {
+    
+  }
+  
+  @media (max-width: 1280px) {
+    
+  }
+  
+  @media (max-width: 768px) {
+    .cs2-data{
+      display: grid;
+      grid-template-columns: min-content;
+    }
+    .map-details{
+      margin: -30%;
+      width: 20px;
+      margin-top: 100px;
+    }
+    .players-info{
+      display: flex;
+      flex-direction: column;
+      margin: 30px;
+    }
+  }
